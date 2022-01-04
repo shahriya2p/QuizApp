@@ -3,7 +3,7 @@ module.exports = mongoose => {
         {
             question_id: String,
             selectedAnswer: String,
-            user: String,
+            free_text: String,
             result: Boolean,
         },
         { timestamps: true }

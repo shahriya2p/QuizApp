@@ -17,7 +17,7 @@ exports.checkAnswer = async (req, res) => {
                 const newAnswer = Answers({
                     question_id: req.body.questionId,
                     selectedAnswer: req.body.selectedAnswer,
-                    user: req.body.user,
+                    free_text: req.body.free_text,
                     result: req.body.selectedAnswer === existingQues.Answer,
                 })
                 await newAnswer.save();
