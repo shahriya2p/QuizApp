@@ -88,14 +88,15 @@ const Index = ({navigation}) => {
         style={[
           styles.optionStyle,
           {
-            borderColor: selectedOption === item ? colors.red : '#D3D3D3',
-            backgroundColor: selectedOption === item ? '#FFCCCB' : colors.white,
+            borderColor: selectedOption === item ? colors.red : colors.gray,
+            backgroundColor:
+              selectedOption === item ? colors.light_red : colors.white,
           },
         ]}>
         <Text
           style={[
             styles.optionText,
-            {color: selectedOption === item ? colors.red : 'black'},
+            {color: selectedOption === item ? colors.red : colors.black},
           ]}>
           {item}
         </Text>
@@ -138,7 +139,7 @@ const Index = ({navigation}) => {
           activeOpacity={0.7}
           onPress={() => navigation.goBack()}
           style={styles.backButton}>
-          <AntDesign name={'arrowleft'} size={20} color={'black'} />
+          <AntDesign name={'arrowleft'} size={20} color={colors.black} />
         </TouchableOpacity>
         <TextInput
           value={freeText}
@@ -160,12 +161,16 @@ const Index = ({navigation}) => {
         style={[
           styles.submitButton,
           {
+            backgroundColor:
+              freeText === '' || selectedOption === ''
+                ? colors.gray
+                : colors.red,
             marginBottom: isKeyboardVisible
               ? heightPercentageToDP(1)
               : heightPercentageToDP(5),
           },
         ]}
-        disabled={isSubmitLoading}
+        disabled={isSubmitLoading || freeText === '' || selectedOption === ''}
         onPress={onSubmit}>
         {isSubmitLoading ? (
           <ActivityIndicator size={'small'} color={colors.white} />
