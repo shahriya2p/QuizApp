@@ -13,7 +13,7 @@ const Index = ({navigation}) => {
         style={styles.asset}
         resizeMode={'contain'}
       />
-      <Text style={styles.titleText}>Quiz App</Text>
+      <Text style={styles.titleText}>Welcome to Quiz App</Text>
       <TouchableOpacity
         activeOpacity={0.7}
         style={styles.startQuizButton}

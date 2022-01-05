@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontFamily: 'Gilroy-Bold',
-    fontSize: 40,
+    fontSize: 35,
     marginTop: hp(3),
   },
   startQuizButton: {
