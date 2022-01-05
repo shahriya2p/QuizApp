@@ -62,12 +62,6 @@ npm start
 
 ```
 
-Run Following command in other terminal to run IOS Application
-
-```sh
-yarn ios
-```
-
 Run Following command for build web app for production to the `build` folder.
 
 ```sh
