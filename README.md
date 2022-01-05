@@ -57,6 +57,8 @@ Make sure you correct environment to run this app.
 Install the dependencies start the server.
 
 ```sh
+
+cd frontendWebApp
 npm i
 npm start
 
