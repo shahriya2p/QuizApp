@@ -21,9 +21,8 @@ const styles = StyleSheet.create({
   textInput: {
     paddingVertical: heightPercentageToDP(2),
     paddingHorizontal: widthPercentageToDP(4),
-    marginVertical: heightPercentageToDP(2),
     borderRadius: heightPercentageToDP(2),
-    flex: 1,
+    width: '100%',
     fontSize: 18,
     fontFamily: 'Gilroy-Regular',
     backgroundColor: colors.light_red,
@@ -41,6 +40,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: widthPercentageToDP(5),
     borderRadius: heightPercentageToDP(2),
     alignItems: 'center',
+    width: widthPercentageToDP(42),
     shadowColor: colors.black,
     shadowOffset: {
       width: 0,
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: colors.white,
     fontFamily: 'Gilroy-SemiBold',
-    fontSize: 20,
+    fontSize: 16,
   },
   questionText: {
     fontFamily: 'Gilroy-Bold',
@@ -69,8 +69,7 @@ const styles = StyleSheet.create({
   optionStyle: {
     paddingVertical: heightPercentageToDP(2),
     paddingHorizontal: widthPercentageToDP(4),
-    borderWidth: 1,
-    borderRadius: heightPercentageToDP(2),
+    borderRadius: heightPercentageToDP(1),
     marginVertical: heightPercentageToDP(1),
     alignItems: 'center',
   },
@@ -78,7 +77,22 @@ const styles = StyleSheet.create({
     fontFamily: 'Gilroy-SemiBold',
     fontSize: 20,
   },
-  headerContainer: {flexDirection: 'row', alignItems: 'center'},
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginVertical: heightPercentageToDP(2),
+  },
+  shadow: {
+    shadowColor: colors.black,
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3.49,
+    elevation: 12,
+  },
 });
 
 export default styles;

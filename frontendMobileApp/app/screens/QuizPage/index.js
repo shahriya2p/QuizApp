@@ -12,7 +12,10 @@ import {
 import styles from './styles';
 import axios from 'axios';
 import colors from '../../constants/colors';
-import {heightPercentageToDP} from '../../helpers/helperFunctions';
+import {
+  heightPercentageToDP,
+  widthPercentageToDP,
+} from '../../helpers/helperFunctions';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Urls from '../../constants/urls';
 
@@ -88,15 +91,15 @@ const Index = ({navigation}) => {
         style={[
           styles.optionStyle,
           {
-            borderColor: selectedOption === item ? colors.red : colors.gray,
             backgroundColor:
-              selectedOption === item ? colors.light_red : colors.white,
+              selectedOption === item ? colors.red : colors.light_red,
           },
+          selectedOption === item ? styles.shadow : {},
         ]}>
         <Text
           style={[
             styles.optionText,
-            {color: selectedOption === item ? colors.red : colors.black},
+            {color: selectedOption === item ? colors.white : colors.black},
           ]}>
           {item}
         </Text>
@@ -141,43 +144,64 @@ const Index = ({navigation}) => {
           style={styles.backButton}>
           <AntDesign name={'arrowleft'} size={20} color={colors.black} />
         </TouchableOpacity>
-        <TextInput
-          value={freeText}
-          onChangeText={setFreeText}
-          selectionColor={colors.red}
-          placeholder={'Enter Text Here....'}
-          style={styles.textInput}
-        />
+        <Text style={{fontSize: 20, fontFamily: 'Gilroy-bold'}}>Quiz</Text>
+        <View style={{width: widthPercentageToDP(10)}} />
       </View>
+      <TextInput
+        value={freeText}
+        onChangeText={setFreeText}
+        selectionColor={colors.red}
+        placeholder={'Enter Text Here....'}
+        style={styles.textInput}
+      />
       <Text style={styles.questionText}>{question.Question}</Text>
       <FlatList
         data={Object.values(question.Options)}
-        style={{marginTop: heightPercentageToDP(3)}}
+        style={{marginTop: heightPercentageToDP(2)}}
         renderItem={OptionTab}
         scrollEnabled={false}
       />
-      <TouchableOpacity
-        activeOpacity={0.7}
-        style={[
-          styles.submitButton,
-          {
-            backgroundColor:
-              freeText === '' || selectedOption === ''
-                ? colors.gray
-                : colors.red,
-            marginBottom: isKeyboardVisible
-              ? heightPercentageToDP(1)
-              : heightPercentageToDP(5),
-          },
-        ]}
-        disabled={isSubmitLoading || freeText === '' || selectedOption === ''}
-        onPress={onSubmit}>
-        {isSubmitLoading ? (
-          <ActivityIndicator size={'small'} color={colors.white} />
-        ) : (
-          <Text style={styles.buttonText}>Submit Answer</Text>
-        )}
-      </TouchableOpacity>
+      <View
+        style={{
+          marginBottom: isKeyboardVisible
+            ? heightPercentageToDP(1)
+            : heightPercentageToDP(5),
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={[
+            styles.submitButton,
+            {
+              backgroundColor:
+                freeText === '' || selectedOption === ''
+                  ? colors.gray
+                  : colors.red,
+            },
+          ]}
+          disabled={isSubmitLoading || freeText === '' || selectedOption === ''}
+          onPress={onSubmit}>
+          {isSubmitLoading ? (
+            <ActivityIndicator size={'small'} color={colors.white} />
+          ) : (
+            <Text style={styles.buttonText}>Submit Answer</Text>
+          )}
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={[
+            styles.submitButton,
+            {
+              backgroundColor: colors.red,
+            },
+          ]}
+          disabled={isSubmitLoading}
+          onPress={() => navigation.goBack()}>
+          <Text style={styles.buttonText}>Back</Text>
+        </TouchableOpacity>
+      </View>
     </KeyboardAvoidingView>
   );
 };
